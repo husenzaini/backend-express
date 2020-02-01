@@ -7,6 +7,4 @@ app.use('/api/v1', router)
 
 app.listen(port, function(){
     console.log('aplikasi nyala1')
-    console.log(port)
 })
-
