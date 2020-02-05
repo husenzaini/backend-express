@@ -6,10 +6,12 @@ module.exports = {
       const asc = req.query.asc
         categoryModel.getCategory(sortBy, asc)
         .then((result)=>{
+          console.log(result)
           miscHelper.response(res, result)
         })
-        .catch(err=> {
-          miscHelper.response(res, {}, res.status, err)})
+        .catch(err=>{
+          miscHelper.response(res, {}, res.status, err)
+        })
     },
     categoryDetail: (req, res) =>{
         const id_category = req.params.id_category;
@@ -17,8 +19,9 @@ module.exports = {
           .then((result) => {
             res.json(result)
           })
-          .catch(err => {
-            miscHelper.response(res, {}, res.status, err)})
+          .catch(err=>{
+            miscHelper.response(res, {}, res.status, err)
+          })
     },
     insertCategory: (req, res) => {
       const {name} = req.body;
@@ -29,8 +32,9 @@ module.exports = {
         .then((result) => {
           miscHelper.response(res, result, 201)
         })
-        .catch(err => {
-          miscHelper.response(res, {}, res.status, err)})
+        .catch(err=>{
+          miscHelper.response(res, {}, res.status, err)
+        })
     },
     updateCategory: (req, res) => {
         const id_category = req.params.id_category
@@ -42,8 +46,9 @@ module.exports = {
           .then((result) => {
             res.json(result)
           })
-          .catch(err => {
-            miscHelper.response(res, {}, res.status, err)})
+          .catch(err=>{
+            miscHelper.response(res, {}, res.status, err)
+          })
       },
       deleteCategory: (req, res) => {
         const id_category = req.params.id_category;
@@ -52,7 +57,8 @@ module.exports = {
           .then((result) => {
             res.json(result)
           })
-          .catch(err => {
-            miscHelper.response(res, {}, res.status, err)})
+          .catch(err=>{
+            miscHelper.response(res, {}, res.status, err)
+          })
       },
 }

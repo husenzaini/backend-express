@@ -1,4 +1,5 @@
 const express = require('express');
+
 const product = require('./product');
 const category = require('./category');
 const payment = require('./payment');
@@ -8,8 +9,8 @@ const Router = express.Router();
 
 Router.use('/product', product);
 Router.use('/category', category);
+Router.use('/cart', cart);
 Router.use('/payment', payment);
-Router.use('./cart', cart);
-Router.use('./user', user);
+Router.use('/user', user);
 
 module.exports = Router;

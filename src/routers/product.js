@@ -31,5 +31,4 @@ Router
 .delete('/:id_product', productController.deleteProduct)
 .post('/addtocart', auth.verify, productController.addToCart)
 
-
 module.exports = Router

@@ -6,9 +6,9 @@ const checkoutControler = require('../controllers/order');
 const auth = require('../helpers/auth');
 
 router
-    .get('/', cartController.getAllCart)
-    .patch('/:cart_id', cartController.editQty)
-    .delete('/:cart_id', cartController.deleteCart)
+    .get('/', auth.verify, cartController.getAllCart)
+    .patch('/:cart_id', auth.verify, cartController.editQty)
+    .delete('/:cart_id', auth.verify, cartController.deleteCart)
     .post('/order', auth.verify, checkoutControler.checkout)
    
 

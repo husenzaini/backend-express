@@ -1,7 +1,7 @@
 require('dotenv').config();
-const express = require('express')
-const app = express()
-const bodyParser = require ('body-parser');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 const port = process.env.SERVER_PORT
 const router = require('./src/routers/index')
 

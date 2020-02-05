@@ -9,4 +9,5 @@ Router
 .patch('/:id_category', categoryController.updateCategory)
 .delete('/:id_category', categoryController.deleteCategory)
 
-module.exports = Router 
+module.exports = Router
+

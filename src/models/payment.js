@@ -17,6 +17,7 @@ module.exports = {
           connection.query("SELECT p.*, u.name as user_name, pr.name as product_name FROM payment as p LEFT JOIN user as u ON p.user_id = u.id LEFT JOIN product as pr ON p.product_id =pr.id ORDER BY "+ sortBy + " " + order + " LIMIT ?,?",[parseInt(start), parseInt(perPage)], 
           (err, result)=>{
             if(!err){
+              console.log(result)
               match.result = result
               resolve(match);
             }else{

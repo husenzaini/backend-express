@@ -2,13 +2,14 @@ const connection = require('../configs/db')
 module.exports = {
     checkout: (user_id) => {
         const message = []
+        // console.log(user_id)
         return new Promise((resolve, reject) =>{
             connection.query("SELECT * FROM cart WHERE user_id =?", user_id, 
             (err, result)=>{
                 if(!err){
                     // console.log('cek')
                     if(result.length >0){
-                        // console.log('result', result)
+                        console.log('result', result)
                         result.forEach(e => {
                             connection.query("SELECT id,name,price,stock FROM product WHERE id =?", e.product_id,
                             (err, resultp)=>{
@@ -48,7 +49,7 @@ module.exports = {
                             
                         })
                     }else{
-                        resolve("cart is empty")
+                        resolve("sorry, cart is empty. shop again!")
                     }
                 }else{
                     reject (new Error (err))

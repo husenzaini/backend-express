@@ -1,16 +1,18 @@
 const connection = require('../configs/db')
 module.exports = {
-    getCategory: (sortBy = "id", asc =1) =>{
+    getCategory: (sortBy = "id", asc = 1) =>{
         return new Promise((resolve, reject)=>{
-
-          const sortableColumn = ['name']
-          if (!sortableColumn.includes (sortBy)){
-            reject(new Error('Invalid sort column'))
-          }
-            const order = asc == -1?'DESC': 'ASC'
+        
+            const sortableColumn = ['id', 'name']
+            if (!sortableColumn.includes (sortBy)){
+              reject(new Error('invalid sort column'))
+            }
+            const order = asc == -1?'DESC':'ASC'
+          
           connection.query("SELECT * FROM category ORDER BY "+ sortBy + " " + order, 
           (err, result)=>{
             if(!err){
+              console.log(result)
               resolve(result);
             }else{
               reject(new Error(err));
@@ -66,4 +68,5 @@ module.exports = {
         })
       })
     },
+
 }

@@ -3,7 +3,7 @@ const userModel = require('../models/user');
 const miscHelper = require('../helpers/helpers');
 module.exports = {
     register:(req, res)=>{
-        const {name, user_name, password, adress, birthday} = req.body 
+        const {name, user_name, password, address, birthday} = req.body 
         if (!user_name){
             return miscHelper.response(res, {}, 422, "can't user_name empty")
         }
@@ -17,7 +17,7 @@ module.exports = {
             name,
             user_name,
             password: miscHelper.hashPassword(password),
-            adress,
+            address,
             birthday
         }
         userModel.creatUser(data)
@@ -46,7 +46,7 @@ module.exports = {
                     return miscHelper.response(res, {}, 422, "invalid password")
                 }
                 const {id, user_name, name} = result[0]
-                console.log(id)
+                // console.log(id)
                 const token = miscHelper.generateToken(id, user_name, name)
                 return miscHelper.response(res, {token:token}, 201, "succes login")
             }
