@@ -1,10 +1,14 @@
 require('dotenv').config();
 const express = require('express')
 const app = express()
+const bodyParser = require ('body-parser');
 const port = process.env.SERVER_PORT
 const router = require('./src/routers/index')
-app.use('/api/v1', router)
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
+
+app.use('/api/v1', router)
 app.listen(port, function(){
-    console.log('aplikasi nyala1')
+    console.log('app running')
 })

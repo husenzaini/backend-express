@@ -1,0 +1,28 @@
+{
+  "name": "task1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/husenzaini/backend-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/husenzaini/backend-express/issues"
+  },
+  "homepage": "https://github.com/husenzaini/backend-express#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2"
+  }
+}
