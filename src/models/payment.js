@@ -1,20 +1,16 @@
 const connection = require('../configs/db')
 module.exports = {
-    getPayment:  (sortBy = "id", asc = 1, page = 1, perPage = 5) =>{
+    getPayment:  (sortBy = "id", asc = 1) =>{
       return new Promise(async(resolve, reject)=>{
-        if(sortBy || page || perPage){
-          const match = {}
+        if(sortBy){
+        
           const sortableColumn = ['updated', 'id']
           if (!sortableColumn.includes (sortBy)){
             reject(new Error('invalid sort column'))
           }
           const order = asc == -1?'DESC':'ASC'
          
-          const start = (parseInt(perPage)*parseInt(page))-parseInt(perPage)
-          match.page = page
-          match.perPage = perPage
-         
-          connection.query("SELECT p.*, u.name as user_name, pr.name as product_name FROM payment as p LEFT JOIN user as u ON p.user_id = u.id LEFT JOIN product as pr ON p.product_id =pr.id ORDER BY "+ sortBy + " " + order + " LIMIT ?,?",[parseInt(start), parseInt(perPage)], 
+          connection.query("SELECT p.*, u.name as user_name, pr.name as product_name FROM payment as p LEFT JOIN user as u ON p.user_id = u.id LEFT JOIN product as pr ON p.product_id =pr.id ORDER BY "+ sortBy + " " + order, 
           (err, result)=>{
             if(!err){
               console.log(result)
@@ -25,26 +21,6 @@ module.exports = {
             }
           }) 
         }
-        connection.query("SELECT * FROM `payment` LIMIT 1, 3 ORDER BY name asc", 
-        (err, result)=>{
-          if(!err){
-            resolve(result);
-          }else{
-            reject(new Error(err));
-          }
-        })
       })
-    },
-    countModel: (tabel) =>{
-      return new Promise((resolve, reject) => {
-        connection.query("SELECT count(*) as TOTAL FROM payment", 
-        (err, result) => {
-          if (!err) {
-            resolve(result);
-          } else {
-            reject(new Error(err));
-          }
-        })
-      })
-  }
+    }
 }
