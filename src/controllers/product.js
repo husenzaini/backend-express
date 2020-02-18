@@ -2,7 +2,6 @@ const productModel = require('../models/product')
 const miscHelper = require('../helpers/helpers');
 module.exports = {
     getProduct: async (req, res)=>{
-        console.log(req.query)
         const name = req.query.name
         const description = req.query.description
         const sortBy = req.query.sortBy
