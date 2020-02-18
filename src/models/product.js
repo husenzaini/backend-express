@@ -1,6 +1,6 @@
 const connection = require('../configs/db')
 module.exports = {
-    getProduct: (name = "", description = "", sortBy = "id", asc = 1, page = 1, perPage = 5) =>{
+    getProduct: (name = "", description = "", sortBy = "id", asc = 1, page = 1, perPage = 20) =>{
       return new Promise((resolve, reject)=>{
         if(name || description || sortBy || page || perPage){
           const match = {}          
@@ -13,7 +13,7 @@ module.exports = {
   
           match.current_page = page
           match.perPage = perPage
-          match.limit = 100
+          match.limit = 50
           const prevPage = parseInt(parseInt(page)-1)
           match.previous_page = page>0? "http://localhost:4002/api/v1/product?page="+ prevPage: null
           match.next_page = "http://localhost:4002/api/v1/product?page="+ parseInt(parseInt(page)+1)  

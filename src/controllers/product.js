@@ -2,6 +2,7 @@ const productModel = require('../models/product')
 const miscHelper = require('../helpers/helpers');
 module.exports = {
     getProduct: async (req, res)=>{
+        console.log(req.query)
         const name = req.query.name
         const description = req.query.description
         const sortBy = req.query.sortBy
@@ -46,7 +47,7 @@ module.exports = {
         description,
         price,
         stock,
-        image: `http://localhost:4002/uploads/${req.file.filename}`,
+        image: ``,
         id_category
       }
       productModel.insertProduct(data)

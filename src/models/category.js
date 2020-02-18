@@ -12,7 +12,6 @@ module.exports = {
           connection.query("SELECT * FROM category ORDER BY "+ sortBy + " " + order, 
           (err, result)=>{
             if(!err){
-              console.log(result)
               resolve(result);
             }else{
               reject(new Error(err));
